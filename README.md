@@ -21,3 +21,6 @@ This app is not intended to diagnose, treat, or cure medical conditions. You sho
 - [Bartlett _et al._](https://doi.org/10.5694/mja13.10912)
 - [Tähkämö _et al._](https://doi.org/10.1080/07420528.2018.1527773)
 - [van Andel _et al._](https://doi.org/10.1080/07420528.2020.1835943)
+- [Saxvig _et al._](https://doi.org/10.3109/07420528.2013.823200)
+- [Paine _et al._](https://doi.org/10.3109/07420528.2014.885036)
+- [Richardson _et al._](https://doi.org/10.1016/j.smrv.2016.06.010)
