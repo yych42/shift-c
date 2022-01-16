@@ -1,5 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { goto, prefetch } from '$app/navigation';
 
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
@@ -11,6 +11,7 @@
 	});
 
 	function start() {
+		prefetch('/start');
 		shouldShow = false;
 		const progress = {
 			step: '/start',
