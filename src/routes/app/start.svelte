@@ -1,30 +1,13 @@
 <script>
-	import { goto } from '$app/navigation';
-
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { next } from '$lib/progress';
 
 	let shouldShow = false;
 
 	onMount(() => {
 		shouldShow = true;
 	});
-
-	function next(path) {
-		console.log('next', path);
-		shouldShow = false;
-		const progress = {
-			step: '/app/survey',
-			finished: false,
-			data: {}
-		};
-		// Write progress to local storage
-		localStorage.setItem('progress', JSON.stringify(progress));
-		// Wait for 400 ms for the animation to finish
-		setTimeout(() => {
-			goto(path);
-		}, 400);
-	}
 </script>
 
 {#if shouldShow}
@@ -83,7 +66,8 @@
 	<div class="mt-8 z-10 flex flex-col space-y-4" out:fade={{ duration: 400 }}>
 		<button
 			on:click={() => {
-				next('/app/survey');
+				shouldShow = false;
+				next({ to: '/app/survey' });
 			}}
 			in:fly={{ y: 8, duration: 1000, delay: 9000 }}
 			class="items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-800 transition-colors"
@@ -92,7 +76,8 @@
 		</button>
 		<button
 			on:click={() => {
-				next('/learn/circadian');
+				shouldShow = false;
+				next({ to: '/learn/circadian', nextStep: '/app/survey', data: { learn: 'started' } });
 			}}
 			in:fly={{ y: 8, duration: 1000, delay: 9400 }}
 			class="text-center px-6 py-3 border border-transparent text-base rounded-full text-indigo-600 bg-stone-100"

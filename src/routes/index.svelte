@@ -1,6 +1,5 @@
 <script>
-	import { goto, prefetch } from '$app/navigation';
-
+	import { next } from '$lib/progress';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 
@@ -9,22 +8,6 @@
 	onMount(() => {
 		shouldShow = true;
 	});
-
-	function start() {
-		prefetch('/app/start');
-		shouldShow = false;
-		const progress = {
-			step: '/app/start',
-			finished: false,
-			data: {}
-		};
-		// Write progress to local storage
-		localStorage.setItem('progress', JSON.stringify(progress));
-		// Wait for 400 ms for the animation to finish
-		setTimeout(() => {
-			goto('/app/start');
-		}, 400);
-	}
 </script>
 
 {#if shouldShow}
@@ -52,7 +35,10 @@
 	</p>
 	<div class="mt-8" in:fly={{ y: 8, duration: 1000, delay: 3400 }} out:fade={{ duration: 400 }}>
 		<button
-			on:click={start}
+			on:click={() => {
+				shouldShow = false;
+				next({ to: '/app/start', shouldPrefetch: true });
+			}}
 			class="items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-800 hover:bg-indigo-900 transition-colors"
 		>
 			Get started
