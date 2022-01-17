@@ -11,10 +11,10 @@
 	});
 
 	function start() {
-		prefetch('/start');
+		prefetch('/app/start');
 		shouldShow = false;
 		const progress = {
-			step: '/start',
+			step: '/app/start',
 			finished: false,
 			data: {}
 		};
@@ -22,7 +22,7 @@
 		localStorage.setItem('progress', JSON.stringify(progress));
 		// Wait for 400 ms for the animation to finish
 		setTimeout(() => {
-			goto('/start');
+			goto('/app/start');
 		}, 400);
 	}
 </script>

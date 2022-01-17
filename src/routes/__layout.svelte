@@ -3,6 +3,10 @@
 	let soundOn = false;
 </script>
 
+<svelte:head>
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+</svelte:head>
+
 <div class="h-full overflow-scroll bg-stone-100">
 	<!-- Top Bar -->
 	<div class="fixed z-50 top-0 left-0 right-0 p-4 flex flex-row justify-between">
