@@ -65,21 +65,29 @@
 
 	<div class="mt-8 z-10 flex flex-col space-y-4" out:fade={{ duration: 400 }}>
 		<button
+			disabled
 			on:click={() => {
 				shouldShow = false;
 				next({ to: '/app/survey' });
 			}}
 			in:fly={{ y: 8, duration: 1000, delay: 9000 }}
+			on:introend={(e) => {
+				e.target.removeAttribute('disabled');
+			}}
 			class="items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-800 transition-colors"
 		>
 			💪 Let's do this
 		</button>
 		<button
+			disabled
 			on:click={() => {
 				shouldShow = false;
 				next({ to: '/learn/circadian', nextStep: '/app/survey', data: { learn: 'started' } });
 			}}
 			in:fly={{ y: 8, duration: 1000, delay: 9400 }}
+			on:introend={(e) => {
+				e.target.removeAttribute('disabled');
+			}}
 			class="text-center px-6 py-3 border border-transparent text-base rounded-full text-indigo-600 bg-stone-100"
 		>
 			Learn more
